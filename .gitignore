@@ -16,3 +16,4 @@ TODO.md
 .idea/
 *.env
 web/node_modules
+/api/operations.json

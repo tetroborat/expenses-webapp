@@ -1,0 +1,74 @@
+
+@keyframes AnimateBGColor {
+    0%{background-position:0 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0 50%}
+}
+
+@keyframes AnimateCircle {
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+body {
+    max-width: 1200px;
+    transition: 3s ease;
+}
+
+body {
+    background-size: 150% 250%;
+}
+
+.btn-colorful {
+    background-size: 150%;
+}
+
+body, .btn-colorful {
+    animation: AnimateBGColor 15s ease infinite;
+    background-image:
+            linear-gradient(217deg, rgba(215, 41, 99, .6), rgba(255, 0, 0, .1) 70%),
+            linear-gradient(336deg, rgba(124, 71, 243, .6), rgba(124, 71, 243, .1) 70%),
+            linear-gradient(77deg, rgba(0, 119, 255, .6), rgba(0, 0, 255, .3) 70%);
+    color: aliceblue !important;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+body {
+    font-family: "Century Gothic", Futura, serif;
+    width: 100%;
+}
+
+.circles{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -10;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.2);
+    animation: AnimateCircle 25s linear infinite;
+    bottom: -150px;
+}
