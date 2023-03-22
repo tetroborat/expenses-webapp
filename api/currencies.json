@@ -1,0 +1,1022 @@
+[
+  {
+    "iso_code": "AED",
+    "eng_name": "United Arab Emirates Dirham",
+    "symbol": "د.إ",
+    "rus_name": "ОАЭ Дирхам"
+  },
+  {
+    "iso_code": "AFN",
+    "eng_name": "Afghan Afghani",
+    "symbol": "؋",
+    "rus_name": "Афганский афгани"
+  },
+  {
+    "iso_code": "ALL",
+    "eng_name": "Albanian Lek",
+    "symbol": "L",
+    "rus_name": "Албанский лек"
+  },
+  {
+    "iso_code": "AMD",
+    "eng_name": "Armenian Dram",
+    "symbol": "֏",
+    "rus_name": "Армянский драм"
+  },
+  {
+    "iso_code": "ANG",
+    "eng_name": "Netherlands Antillean Guilder",
+    "symbol": "ƒ",
+    "rus_name": "Нидерландский антильский гульден"
+  },
+  {
+    "iso_code": "AOA",
+    "eng_name": "Angolan Kwanza",
+    "symbol": "Kz",
+    "rus_name": "Ангольская кванза"
+  },
+  {
+    "iso_code": "ARS",
+    "eng_name": "Argentine Peso",
+    "symbol": "₱",
+    "rus_name": "Аргентинское песо"
+  },
+  {
+    "iso_code": "AUD",
+    "eng_name": "Australian Dollar",
+    "symbol": "$",
+    "rus_name": "Австралийский доллар"
+  },
+  {
+    "iso_code": "AWG",
+    "eng_name": "Aruban Florin",
+    "symbol": "ƒ",
+    "rus_name": "Арубанский флорин"
+  },
+  {
+    "iso_code": "AZN",
+    "eng_name": "Azerbaijani Manat",
+    "symbol": "₼",
+    "rus_name": "Азербайджанский манат"
+  },
+  {
+    "iso_code": "BAM",
+    "eng_name": "Bosnia-Herzegovina Convertible Mark",
+    "symbol": "KM",
+    "rus_name": "Боснии и Герцеговины конвертируемая марка "
+  },
+  {
+    "iso_code": "BBD",
+    "eng_name": "Barbadian Dollar",
+    "symbol": "$",
+    "rus_name": "Барбадосский доллар"
+  },
+  {
+    "iso_code": "BDT",
+    "eng_name": "Bangladeshi Taka",
+    "symbol": "৳",
+    "rus_name": "Бангладешский така"
+  },
+  {
+    "iso_code": "BGN",
+    "eng_name": "Bulgarian Lev",
+    "symbol": "BGN",
+    "rus_name": "Болгарский лев"
+  },
+  {
+    "iso_code": "BHD",
+    "eng_name": "Bahraini Dinar",
+    "symbol": ".د.ب",
+    "rus_name": "Бахрейнский динар"
+  },
+  {
+    "iso_code": "BIF",
+    "eng_name": "Burundian Franc",
+    "symbol": "₣",
+    "rus_name": "Бурундийский франк"
+  },
+  {
+    "iso_code": "BMD",
+    "eng_name": "Bermudan Dollar",
+    "symbol": "$",
+    "rus_name": "Бермудский доллар"
+  },
+  {
+    "iso_code": "BND",
+    "eng_name": "Brunei Dollar",
+    "symbol": "$",
+    "rus_name": "Брунейский доллар"
+  },
+  {
+    "iso_code": "BOB",
+    "eng_name": "Bolivian Boliviano",
+    "symbol": "$",
+    "rus_name": "Боливийский боливиано"
+  },
+  {
+    "iso_code": "BRL",
+    "eng_name": "Brazilian Real",
+    "symbol": "$",
+    "rus_name": "Бразильский реал"
+  },
+  {
+    "iso_code": "BSD",
+    "eng_name": "Bahamian Dollar",
+    "symbol": "$",
+    "rus_name": "Багамский доллар"
+  },
+  {
+    "iso_code": "BTC",
+    "eng_name": "Bitcoin",
+    "symbol": "₿",
+    "rus_name": "Биткоин"
+  },
+  {
+    "iso_code": "BTN",
+    "eng_name": "Bhutanese Ngultrum",
+    "symbol": "Nu",
+    "rus_name": "Бутанский нгултрум"
+  },
+  {
+    "iso_code": "BWP",
+    "eng_name": "Botswanan Pula",
+    "symbol": "P",
+    "rus_name": "Ботсванан пула"
+  },
+  {
+    "iso_code": "BYN",
+    "eng_name": "New Belarusian Ruble",
+    "symbol": "Br",
+    "rus_name": "Новый белорусский рубль"
+  },
+  {
+    "iso_code": "BYR",
+    "eng_name": "Belarusian Ruble",
+    "symbol": "Br",
+    "rus_name": "Белорусский рубль"
+  },
+  {
+    "iso_code": "BZD",
+    "eng_name": "Belize Dollar",
+    "symbol": "$",
+    "rus_name": "Белизский доллар"
+  },
+  {
+    "iso_code": "CAD",
+    "eng_name": "Canadian Dollar",
+    "symbol": "$",
+    "rus_name": "Канадский доллар"
+  },
+  {
+    "iso_code": "CDF",
+    "eng_name": "Congolese Franc",
+    "symbol": "₣",
+    "rus_name": "Конголезский франк"
+  },
+  {
+    "iso_code": "CHF",
+    "eng_name": "Swiss Franc",
+    "symbol": "₣",
+    "rus_name": "Швейцарский франк"
+  },
+  {
+    "iso_code": "CLF",
+    "eng_name": "Chilean Unit of Account (UF)",
+    "symbol": "UF‎",
+    "rus_name": "Чилийская расчетная единица"
+  },
+  {
+    "iso_code": "CLP",
+    "eng_name": "Chilean Peso",
+    "symbol": "₱",
+    "rus_name": "Чилийское песо"
+  },
+  {
+    "iso_code": "CNY",
+    "eng_name": "Chinese Yuan",
+    "symbol": "¥",
+    "rus_name": "Китайский юань"
+  },
+  {
+    "iso_code": "COP",
+    "eng_name": "Colombian Peso",
+    "symbol": "₱",
+    "rus_name": "Колумбийское песо"
+  },
+  {
+    "iso_code": "CRC",
+    "eng_name": "Costa Rican Colón",
+    "symbol": "₡",
+    "rus_name": "Коста-риканский колон"
+  },
+  {
+    "iso_code": "CUC",
+    "eng_name": "Cuban Convertible Peso",
+    "symbol": "₱",
+    "rus_name": "Кубинское конвертируемое песо"
+  },
+  {
+    "iso_code": "CUP",
+    "eng_name": "Cuban Peso",
+    "symbol": "₱",
+    "rus_name": "Кубинское песо"
+  },
+  {
+    "iso_code": "CVE",
+    "eng_name": "Cape Verdean Escudo",
+    "symbol": "$",
+    "rus_name": "Эскудо кабо-верде"
+  },
+  {
+    "iso_code": "CZK",
+    "eng_name": "Czech Republic Koruna",
+    "symbol": "Kč",
+    "rus_name": "Чешская крона"
+  },
+  {
+    "iso_code": "DJF",
+    "eng_name": "Djiboutian Franc",
+    "symbol": "₣",
+    "rus_name": "Джибутийский франк"
+  },
+  {
+    "iso_code": "DKK",
+    "eng_name": "Danish Krone",
+    "symbol": "kr",
+    "rus_name": "Датская крона"
+  },
+  {
+    "iso_code": "DOP",
+    "eng_name": "Dominican Peso",
+    "symbol": "₱",
+    "rus_name": "Доминиканское песо"
+  },
+  {
+    "iso_code": "DZD",
+    "eng_name": "Algerian Dinar",
+    "symbol": ".د.ج",
+    "rus_name": "Алжирский динар"
+  },
+  {
+    "iso_code": "EGP",
+    "eng_name": "Egyptian Pound",
+    "symbol": "£",
+    "rus_name": "Египетский фунт"
+  },
+  {
+    "iso_code": "ERN",
+    "eng_name": "Eritrean Nakfa",
+    "symbol": "Nfk",
+    "rus_name": "Эритрейская накфа"
+  },
+  {
+    "iso_code": "ETB",
+    "eng_name": "Ethiopian Birr",
+    "symbol": "Br",
+    "rus_name": "Эфиопский быр"
+  },
+  {
+    "iso_code": "EUR",
+    "eng_name": "Euro",
+    "symbol": "€",
+    "rus_name": "Евро"
+  },
+  {
+    "iso_code": "FJD",
+    "eng_name": "Fijian Dollar",
+    "symbol": "$",
+    "rus_name": "Фиджийский доллар"
+  },
+  {
+    "iso_code": "FKP",
+    "eng_name": "Falkland Islands Pound",
+    "symbol": "£",
+    "rus_name": "Фолклендских островов фунт "
+  },
+  {
+    "iso_code": "GBP",
+    "eng_name": "British Pound Sterling",
+    "symbol": "£",
+    "rus_name": "Британский фунт стерлингов"
+  },
+  {
+    "iso_code": "GEL",
+    "eng_name": "Georgian Lari",
+    "symbol": "₾",
+    "rus_name": "Грузинский лари"
+  },
+  {
+    "iso_code": "GGP",
+    "eng_name": "Guernsey Pound",
+    "symbol": "£",
+    "rus_name": "Гернсийский фунт"
+  },
+  {
+    "iso_code": "GHS",
+    "eng_name": "Ghanaian Cedi",
+    "symbol": "₵",
+    "rus_name": "Ганский седи"
+  },
+  {
+    "iso_code": "GIP",
+    "eng_name": "Gibraltar Pound",
+    "symbol": "£",
+    "rus_name": "Гибралтарский фунт"
+  },
+  {
+    "iso_code": "GMD",
+    "eng_name": "Gambian Dalasi",
+    "symbol": "D",
+    "rus_name": "Гамбийский даласи"
+  },
+  {
+    "iso_code": "GNF",
+    "eng_name": "Guinean Franc",
+    "symbol": "₣",
+    "rus_name": "Гвинейский франк"
+  },
+  {
+    "iso_code": "GTQ",
+    "eng_name": "Guatemalan Quetzal",
+    "symbol": "Q",
+    "rus_name": "Гватемальский кетсаль"
+  },
+  {
+    "iso_code": "GYD",
+    "eng_name": "Guyanaese Dollar",
+    "symbol": "$",
+    "rus_name": "Гайанский доллар"
+  },
+  {
+    "iso_code": "HKD",
+    "eng_name": "Hong Kong Dollar",
+    "symbol": "$",
+    "rus_name": "Гонконгский доллар"
+  },
+  {
+    "iso_code": "HNL",
+    "eng_name": "Honduran Lempira",
+    "symbol": "L",
+    "rus_name": "Гондурасская лемпира"
+  },
+  {
+    "iso_code": "HRK",
+    "eng_name": "Croatian Kuna",
+    "symbol": "Kn",
+    "rus_name": "Хорватская куна"
+  },
+  {
+    "iso_code": "HTG",
+    "eng_name": "Haitian Gourde",
+    "symbol": "G",
+    "rus_name": "Гаитянский гурд"
+  },
+  {
+    "iso_code": "HUF",
+    "eng_name": "Hungarian Forint",
+    "symbol": "Ft",
+    "rus_name": "Венгерский форинт"
+  },
+  {
+    "iso_code": "IDR",
+    "eng_name": "Indonesian Rupiah",
+    "symbol": "₹",
+    "rus_name": "Индонезийская рупия"
+  },
+  {
+    "iso_code": "ILS",
+    "eng_name": "Israeli New Sheqel",
+    "symbol": "₪",
+    "rus_name": "Израильский новый шекель"
+  },
+  {
+    "iso_code": "IMP",
+    "eng_name": "Manx pound",
+    "symbol": "£",
+    "rus_name": "Мэнский фунт"
+  },
+  {
+    "iso_code": "INR",
+    "eng_name": "Indian Rupee",
+    "symbol": "₹",
+    "rus_name": "Индийская рупия"
+  },
+  {
+    "iso_code": "IQD",
+    "eng_name": "Iraqi Dinar",
+    "symbol": ".د.ع",
+    "rus_name": "Иракский динар"
+  },
+  {
+    "iso_code": "IRR",
+    "eng_name": "Iranian Rial",
+    "symbol": "﷼ ",
+    "rus_name": "Иранский риал"
+  },
+  {
+    "iso_code": "ISK",
+    "eng_name": "Icelandic Króna",
+    "symbol": "kr",
+    "rus_name": "Исландская крона"
+  },
+  {
+    "iso_code": "JEP",
+    "eng_name": "Jersey Pound",
+    "symbol": "£",
+    "rus_name": "Фунт джерси"
+  },
+  {
+    "iso_code": "JMD",
+    "eng_name": "Jamaican Dollar",
+    "symbol": "$",
+    "rus_name": "Ямайский доллар"
+  },
+  {
+    "iso_code": "JOD",
+    "eng_name": "Jordanian Dinar",
+    "symbol": ".د.إ",
+    "rus_name": "Иорданский динар"
+  },
+  {
+    "iso_code": "JPY",
+    "eng_name": "Japanese Yen",
+    "symbol": "¥",
+    "rus_name": "Японская иена"
+  },
+  {
+    "iso_code": "KES",
+    "eng_name": "Kenyan Shilling",
+    "symbol": "KSh",
+    "rus_name": "Кенийский шиллинг"
+  },
+  {
+    "iso_code": "KGS",
+    "eng_name": "Kyrgystani Som",
+    "symbol": "⃀",
+    "rus_name": "Кыргызстанский сом"
+  },
+  {
+    "iso_code": "KHR",
+    "eng_name": "Cambodian Riel",
+    "symbol": "៛",
+    "rus_name": "Камбоджийский риель"
+  },
+  {
+    "iso_code": "KMF",
+    "eng_name": "Comorian Franc",
+    "symbol": "₣",
+    "rus_name": "Коморский франк"
+  },
+  {
+    "iso_code": "KPW",
+    "eng_name": "North Korean Won",
+    "symbol": "₩",
+    "rus_name": "Северокорейская вона"
+  },
+  {
+    "iso_code": "KRW",
+    "eng_name": "South Korean Won",
+    "symbol": "₩",
+    "rus_name": "Южнокорейская вона"
+  },
+  {
+    "iso_code": "KWD",
+    "eng_name": "Kuwaiti Dinar",
+    "symbol": ".د.ك ",
+    "rus_name": "Кувейтский динар"
+  },
+  {
+    "iso_code": "KYD",
+    "eng_name": "Cayman Islands Dollar",
+    "symbol": "$",
+    "rus_name": "Каймановых островов доллар "
+  },
+  {
+    "iso_code": "KZT",
+    "eng_name": "Kazakhstani Tenge",
+    "symbol": "₸",
+    "rus_name": "Казахстанский тенге"
+  },
+  {
+    "iso_code": "LAK",
+    "eng_name": "Laotian Kip",
+    "symbol": "₭",
+    "rus_name": "Лаосский кип"
+  },
+  {
+    "iso_code": "LBP",
+    "eng_name": "Lebanese Pound",
+    "symbol": "£",
+    "rus_name": "Ливанский фунт"
+  },
+  {
+    "iso_code": "LKR",
+    "eng_name": "Sri Lankan Rupee",
+    "symbol": "₹",
+    "rus_name": "Шри-Ланкийская рупия"
+  },
+  {
+    "iso_code": "LRD",
+    "eng_name": "Liberian Dollar",
+    "symbol": "$",
+    "rus_name": "Либерийский доллар"
+  },
+  {
+    "iso_code": "LSL",
+    "eng_name": "Lesotho Loti",
+    "symbol": "L",
+    "rus_name": "Лесото лоти"
+  },
+  {
+    "iso_code": "LTL",
+    "eng_name": "Lithuanian Litas",
+    "symbol": "Lt",
+    "rus_name": "Литовский лит"
+  },
+  {
+    "iso_code": "LVL",
+    "eng_name": "Latvian Lats",
+    "symbol": "Ls",
+    "rus_name": "Латышский лат"
+  },
+  {
+    "iso_code": "LYD",
+    "eng_name": "Libyan Dinar",
+    "symbol": ".د.ل",
+    "rus_name": "Ливийский динар"
+  },
+  {
+    "iso_code": "MAD",
+    "eng_name": "Moroccan Dirham",
+    "symbol": ".د.م",
+    "rus_name": "Марокканский дирхам"
+  },
+  {
+    "iso_code": "MDL",
+    "eng_name": "Moldovan Leu",
+    "symbol": "L",
+    "rus_name": "Молдавский лей"
+  },
+  {
+    "iso_code": "MGA",
+    "eng_name": "Malagasy Ariary",
+    "symbol": "Ar",
+    "rus_name": "Малагасийский ариари"
+  },
+  {
+    "iso_code": "MKD",
+    "eng_name": "Macedonian Denar",
+    "symbol": "ден",
+    "rus_name": "Македонский динар"
+  },
+  {
+    "iso_code": "MMK",
+    "eng_name": "Myanma Kyat",
+    "symbol": "K",
+    "rus_name": "Мьянма кьят"
+  },
+  {
+    "iso_code": "MNT",
+    "eng_name": "Mongolian Tugrik",
+    "symbol": "₮",
+    "rus_name": "Монгольский тугрик"
+  },
+  {
+    "iso_code": "MOP",
+    "eng_name": "Macanese Pataca",
+    "symbol": "$",
+    "rus_name": "Маканская патака"
+  },
+  {
+    "iso_code": "MRO",
+    "eng_name": "Mauritanian Ouguiya",
+    "symbol": "UM",
+    "rus_name": "Мавританская угия"
+  },
+  {
+    "iso_code": "MUR",
+    "eng_name": "Mauritian Rupee",
+    "symbol": "₹",
+    "rus_name": "Маврикийская рупия"
+  },
+  {
+    "iso_code": "MVR",
+    "eng_name": "Maldivian Rufiyaa",
+    "symbol": ".₨",
+    "rus_name": "Мальдивская руфия"
+  },
+  {
+    "iso_code": "MWK",
+    "eng_name": "Malawian Kwacha",
+    "symbol": "K",
+    "rus_name": "Малавийская квача"
+  },
+  {
+    "iso_code": "MXN",
+    "eng_name": "Mexican Peso",
+    "symbol": "₱",
+    "rus_name": "Мексиканское песо"
+  },
+  {
+    "iso_code": "MYR",
+    "eng_name": "Malaysian Ringgit",
+    "symbol": "RM",
+    "rus_name": "Малайзийский ринггит"
+  },
+  {
+    "iso_code": "MZN",
+    "eng_name": "Mozambican Metical",
+    "symbol": "MT",
+    "rus_name": "Мозамбикский метикал"
+  },
+  {
+    "iso_code": "NAD",
+    "eng_name": "Namibian Dollar",
+    "symbol": "N$",
+    "rus_name": "Намибийский доллар"
+  },
+  {
+    "iso_code": "NGN",
+    "eng_name": "Nigerian Naira",
+    "symbol": "₦",
+    "rus_name": "Нигерийская найра"
+  },
+  {
+    "iso_code": "NIO",
+    "eng_name": "Nicaraguan Córdoba",
+    "symbol": "$",
+    "rus_name": "Никарагуанская кордоба"
+  },
+  {
+    "iso_code": "NOK",
+    "eng_name": "Norwegian Krone",
+    "symbol": "kr",
+    "rus_name": "Норвежская крона"
+  },
+  {
+    "iso_code": "NPR",
+    "eng_name": "Nepalese Rupee",
+    "symbol": "₹",
+    "rus_name": "Непальская рупия"
+  },
+  {
+    "iso_code": "NZD",
+    "eng_name": "New Zealand Dollar",
+    "symbol": "$",
+    "rus_name": "Новозеландский доллар"
+  },
+  {
+    "iso_code": "OMR",
+    "eng_name": "Omani Rial",
+    "symbol": "﷼ ",
+    "rus_name": "Оманский риал"
+  },
+  {
+    "iso_code": "PAB",
+    "eng_name": "Panamanian Balboa",
+    "symbol": "B/.",
+    "rus_name": "Панамский бальбоа"
+  },
+  {
+    "iso_code": "PEN",
+    "eng_name": "Peruvian Nuevo Sol",
+    "symbol": "S/",
+    "rus_name": "Перуанский новый соль"
+  },
+  {
+    "iso_code": "PGK",
+    "eng_name": "Papua New Guinean Kina",
+    "symbol": "K",
+    "rus_name": "Папуа - Новой Гвинеи кина"
+  },
+  {
+    "iso_code": "PHP",
+    "eng_name": "Philippine Peso",
+    "symbol": "₱",
+    "rus_name": "Филиппинское песо"
+  },
+  {
+    "iso_code": "PKR",
+    "eng_name": "Pakistani Rupee",
+    "symbol": "₹",
+    "rus_name": "Пакистанская рупия"
+  },
+  {
+    "iso_code": "PLN",
+    "eng_name": "Polish Zloty",
+    "symbol": "zł",
+    "rus_name": "Польский злотый"
+  },
+  {
+    "iso_code": "PYG",
+    "eng_name": "Paraguayan Guarani",
+    "symbol": "₲",
+    "rus_name": "Парагвайский гуарани"
+  },
+  {
+    "iso_code": "QAR",
+    "eng_name": "Qatari Rial",
+    "symbol": "﷼",
+    "rus_name": "Катарский риал"
+  },
+  {
+    "iso_code": "RON",
+    "eng_name": "Romanian Leu",
+    "symbol": "lei",
+    "rus_name": "Румынский лей"
+  },
+  {
+    "iso_code": "RSD",
+    "eng_name": "Serbian Dinar",
+    "symbol": "дин.",
+    "rus_name": "Сербский динар"
+  },
+  {
+    "iso_code": "RUB",
+    "eng_name": "Russian Ruble",
+    "symbol": "₽",
+    "rus_name": "Российский рубль"
+  },
+  {
+    "iso_code": "RWF",
+    "eng_name": "Rwandan Franc",
+    "symbol": "₣",
+    "rus_name": "Руандийский франк"
+  },
+  {
+    "iso_code": "SAR",
+    "eng_name": "Saudi Riyal",
+    "symbol": "﷼ ",
+    "rus_name": "Саудовский риал"
+  },
+  {
+    "iso_code": "SBD",
+    "eng_name": "Solomon Islands Dollar",
+    "symbol": "$",
+    "rus_name": "Соломоновых островов доллар "
+  },
+  {
+    "iso_code": "SCR",
+    "eng_name": "Seychellois Rupee",
+    "symbol": "₹",
+    "rus_name": "Сейшельская рупия"
+  },
+  {
+    "iso_code": "SDG",
+    "eng_name": "Sudanese Pound",
+    "symbol": "£",
+    "rus_name": "Суданский фунт"
+  },
+  {
+    "iso_code": "SEK",
+    "eng_name": "Swedish Krona",
+    "symbol": "kr",
+    "rus_name": "Шведская крона"
+  },
+  {
+    "iso_code": "SGD",
+    "eng_name": "Singapore Dollar",
+    "symbol": "$",
+    "rus_name": "Сингапурский доллар"
+  },
+  {
+    "iso_code": "SHP",
+    "eng_name": "Saint Helena Pound",
+    "symbol": "£",
+    "rus_name": "Святой елены фунт "
+  },
+  {
+    "iso_code": "SLE",
+    "eng_name": "Sierra Leonean Leone SLE",
+    "symbol": "Le",
+    "rus_name": "Сьерра-леоны леоне SLE"
+  },
+  {
+    "iso_code": "SLL",
+    "eng_name": "Sierra Leonean Leone SLL",
+    "symbol": "Le",
+    "rus_name": "Сьерра-леоны леоне SLL"
+  },
+  {
+    "iso_code": "SOS",
+    "eng_name": "Somali Shilling",
+    "symbol": "S",
+    "rus_name": "Сомалийский шиллинг"
+  },
+  {
+    "iso_code": "SRD",
+    "eng_name": "Surinamese Dollar",
+    "symbol": "$",
+    "rus_name": "Суринамский доллар"
+  },
+  {
+    "iso_code": "STD",
+    "eng_name": "São Tomé and Príncipe Dobra",
+    "symbol": "₡",
+    "rus_name": "Сан-томе и Принсипи добра"
+  },
+  {
+    "iso_code": "SVC",
+    "eng_name": "Salvadoran Colón",
+    "symbol": "₡",
+    "rus_name": "Сальвадорский колон"
+  },
+  {
+    "iso_code": "SYP",
+    "eng_name": "Syrian Pound",
+    "symbol": "£",
+    "rus_name": "Сирийский фунт"
+  },
+  {
+    "iso_code": "SZL",
+    "eng_name": "Swazi Lilangeni",
+    "symbol": "L",
+    "rus_name": "Свазилендская лилангени"
+  },
+  {
+    "iso_code": "THB",
+    "eng_name": "Thai Baht",
+    "symbol": "฿",
+    "rus_name": "Тайский бат"
+  },
+  {
+    "iso_code": "TJS",
+    "eng_name": "Tajikistani Somoni",
+    "symbol": "с.",
+    "rus_name": "Таджикский сомони"
+  },
+  {
+    "iso_code": "TMT",
+    "eng_name": "Turkmenistani Manat",
+    "symbol": "₼",
+    "rus_name": "Туркменский манат"
+  },
+  {
+    "iso_code": "TND",
+    "eng_name": "Tunisian Dinar",
+    "symbol": ".د.ت",
+    "rus_name": "Тунисский динар"
+  },
+  {
+    "iso_code": "TOP",
+    "eng_name": "Tongan Paʻanga",
+    "symbol": "$",
+    "rus_name": "Тонганская паанга"
+  },
+  {
+    "iso_code": "TRY",
+    "eng_name": "Turkish Lira",
+    "symbol": "₺",
+    "rus_name": "Турецкая лира"
+  },
+  {
+    "iso_code": "TTD",
+    "eng_name": "Trinidad and Tobago Dollar",
+    "symbol": "$",
+    "rus_name": "Тринидада и тобаго доллар "
+  },
+  {
+    "iso_code": "TWD",
+    "eng_name": "New Taiwan Dollar",
+    "symbol": "$",
+    "rus_name": "Новый тайваньский доллар"
+  },
+  {
+    "iso_code": "TZS",
+    "eng_name": "Tanzanian Shilling",
+    "symbol": "TSh",
+    "rus_name": "Танзанийский шиллинг"
+  },
+  {
+    "iso_code": "UAH",
+    "eng_name": "Ukrainian Hryvnia",
+    "symbol": "₴",
+    "rus_name": "Украинская гривна"
+  },
+  {
+    "iso_code": "UGX",
+    "eng_name": "Ugandan Shilling",
+    "symbol": "USh",
+    "rus_name": "Угандийский шиллинг"
+  },
+  {
+    "iso_code": "USD",
+    "eng_name": "United States Dollar",
+    "symbol": "$",
+    "rus_name": "США доллар"
+  },
+  {
+    "iso_code": "UYU",
+    "eng_name": "Uruguayan Peso",
+    "symbol": "₱",
+    "rus_name": "Уругвайское песо"
+  },
+  {
+    "iso_code": "UZS",
+    "eng_name": "Uzbekistan Som",
+    "symbol": "сўм",
+    "rus_name": "Узбекский сом"
+  },
+  {
+    "iso_code": "VEF",
+    "eng_name": "Venezuelan Bolívar Fuerte",
+    "symbol": "Bs.",
+    "rus_name": "Венесуэльский боливар"
+  },
+  {
+    "iso_code": "VES",
+    "eng_name": "Sovereign Bolivar",
+    "symbol": "Bs.",
+    "rus_name": "Суверенный боливар"
+  },
+  {
+    "iso_code": "VND",
+    "eng_name": "Vietnamese Dong",
+    "symbol": "₫",
+    "rus_name": "Вьетнамский донг"
+  },
+  {
+    "iso_code": "VUV",
+    "eng_name": "Vanuatu Vatu",
+    "symbol": "Vt",
+    "rus_name": "Вануату вату"
+  },
+  {
+    "iso_code": "WST",
+    "eng_name": "Samoan Tala",
+    "symbol": "$",
+    "rus_name": "Самоанская тала"
+  },
+  {
+    "iso_code": "XAF",
+    "eng_name": "CFA Franc BEAC",
+    "symbol": "₣",
+    "rus_name": "Центральноафриканский франк"
+  },
+  {
+    "iso_code": "XAG",
+    "eng_name": "Silver (troy ounce)",
+    "symbol": "oz t",
+    "rus_name": "Серебро (тройская унция)"
+  },
+  {
+    "iso_code": "XAU",
+    "eng_name": "Gold (troy ounce)",
+    "symbol": "oz t",
+    "rus_name": "Золото (тройская унция)"
+  },
+  {
+    "iso_code": "XCD",
+    "eng_name": "East Caribbean Dollar",
+    "symbol": "$",
+    "rus_name": "Восточно-карибский доллар"
+  },
+  {
+    "iso_code": "XDR",
+    "eng_name": "Special Drawing Rights",
+    "symbol": "SDR",
+    "rus_name": "Специальные права заимствования"
+  },
+  {
+    "iso_code": "XOF",
+    "eng_name": "CFA Franc BCEAO",
+    "symbol": "₣",
+    "rus_name": "Западноафриканский франк"
+  },
+  {
+    "iso_code": "XPF",
+    "eng_name": "CFP Franc",
+    "symbol": "₣",
+    "rus_name": "Тихоокеанский франк"
+  },
+  {
+    "iso_code": "YER",
+    "eng_name": "Yemeni Rial",
+    "symbol": "﷼ ",
+    "rus_name": "Йеменский риал"
+  },
+  {
+    "iso_code": "ZAR",
+    "eng_name": "South African Rand",
+    "symbol": "R",
+    "rus_name": "Южноафриканский рэнд"
+  },
+  {
+    "iso_code": "ZMK",
+    "eng_name": "Zambian Kwacha (pre-2013)",
+    "symbol": "K",
+    "rus_name": "Замбийская квача (до 2013 года)"
+  },
+  {
+    "iso_code": "ZMW",
+    "eng_name": "Zambian Kwacha",
+    "symbol": "K",
+    "rus_name": "Замбийская квача"
+  },
+  {
+    "iso_code": "ZWL",
+    "eng_name": "Zimbabwean Dollar",
+    "symbol": "Z$",
+    "rus_name": "Зимбабвийский доллар"
+  }
+]
