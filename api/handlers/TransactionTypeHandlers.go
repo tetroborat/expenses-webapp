@@ -22,6 +22,7 @@ func TransactionTypeList(c *fiber.Ctx, adding bool) error {
 	user := utils.GetCurrentUser(c)
 	database.DB.
 		Where("user_id = ? and adding = ?", user.ID, adding).
+		Order("weight").
 		Find(&types)
 	for _, item := range types {
 		var (
@@ -125,33 +126,4 @@ func EditTransactionType(c *fiber.Ctx) error {
 		Color:  transactionType.Color,
 	})
 	return c.Status(200).JSON(fiber.Map{"success": true})
-}
-
-func PieOfTypeWallets(c *fiber.Ctx) error {
-	var walletPie []models.PieOfTypeWalletsItem
-	var pieGraphicData []utils.PieGraphicItem
-	typeID := c.Params("type_id")
-	fromDate, toDate := c.Params("from_date"), c.Params("to_date")
-	database.DB.
-		Model(&models.Transaction{}).
-		Select("wallet_id, sum(amount) as amount").
-		Preload("Wallet", func(db *gorm.DB) *gorm.DB {
-			return db.Unscoped()
-		}).
-		Preload("Wallet.Currency").
-		Where("type_id = ?", typeID).
-		Where("performed_in BETWEEN ? AND ?", fromDate, toDate).
-		Group("wallet_id").
-		Order("amount desc").
-		Find(&walletPie)
-	user := utils.GetCurrentUser(c)
-	for _, item := range walletPie {
-		amount := item.Amount * currencies.GetCurrencyRate(user.Currency, item.Wallet.Currency).Rate
-		pieGraphicData = append(pieGraphicData, utils.PieGraphicItem{
-			Name:   item.Wallet.Name,
-			Color:  item.Wallet.Color,
-			Amount: amount,
-		})
-	}
-	return c.Status(200).JSON(pieGraphicData)
 }

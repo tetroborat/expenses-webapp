@@ -48,7 +48,7 @@ func Login(c *fiber.Ctx) error {
 		Value:   tokenString,
 		MaxAge:  config.CFG.JwtMaxAge * 60,
 		Expires: expirationTime,
-		Domain:  "192.168.1.105",
+		Domain:  config.CFG.Domain,
 		Path:    "/",
 		Secure:  false,
 		//HTTPOnly: true,
@@ -109,7 +109,7 @@ func Logout(c *fiber.Ctx) error {
 	cookie := &fiber.Cookie{
 		Name:   "token",
 		Value:  "",
-		Domain: "192.168.1.105",
+		Domain: config.CFG.Domain,
 		Path:   "/",
 		Secure: false,
 		//HTTPOnly: true,
@@ -118,4 +118,18 @@ func Logout(c *fiber.Ctx) error {
 	return c.Status(200).JSON(fiber.Map{
 		"success": true,
 	})
+}
+
+func EditUser(c *fiber.Ctx) error {
+	editUser := new(models.EditUser)
+	if err := c.BodyParser(editUser); err != nil {
+		return c.Status(500).JSON(fiber.Map{})
+	}
+	user := utils.GetCurrentUser(c)
+	database.DB.Where("id = ?", user.ID).Updates(models.User{
+		Name:       editUser.Name,
+		Email:      editUser.Email,
+		CurrencyID: editUser.CurrencyID,
+	})
+	return c.Status(200).JSON(fiber.Map{"success": true})
 }

@@ -15,7 +15,4 @@ func TransactionTypeRouter(app fiber.Router) {
 
 	router.Post("/edit/:type_id", middlewares.IsTypeOwner(), handlers.EditTransactionType)
 	router.Delete("/delete/:type_id", middlewares.IsTypeOwner(), handlers.DeleteTransactionType)
-	router.Get("/pie-wallets/:type_id/:from_date--:to_date",
-		middlewares.IsTypeOwner(),
-		handlers.PieOfTypeWallets)
 }

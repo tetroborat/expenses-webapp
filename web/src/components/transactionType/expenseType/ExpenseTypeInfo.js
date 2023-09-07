@@ -1,8 +1,8 @@
 import {Card} from "react-bootstrap";
 import React, {Component} from "react";
-import load from "../../utils/FetchLoad";
-import PieChart from '../infographic/PieChart.tsx';
-import GetIntervalPath from "../../utils/GetIntervalPath";
+import load from "../../../utils/FetchLoad";
+import PieChart from '../../infographic/PieChart.tsx';
+import GetIntervalPath from "../../../utils/GetIntervalPath";
 
 
 export default class ExpenseTypeInfo extends Component {
@@ -26,7 +26,7 @@ export default class ExpenseTypeInfo extends Component {
         let expenseType = this.props.expenseType
         return (
             <div className="mb-5">
-                <h3 className="d-flex justify-content-between ms-3 me-4 mb-3">
+                <h3 className="d-flex justify-content-between mt-0 m-3">
                 <span>
                     <span className="back-btn me-2" onClick={this.props.backAction}>
                         <i className="bi bi-chevron-left"></i>
@@ -40,19 +40,16 @@ export default class ExpenseTypeInfo extends Component {
                         <i className="bi bi-pencil-square"></i>
                     </span>
                     </h5>
-                    {
-                        !this.state.isLoading ?
-                            <PieChart height={250}
-                                      width={250}
-                                      symbol={this.props.mainCurrencySymbol}
-                                      data={this.state.data.length ? this.state.data.map(item => ({
-                                          name: item.name,
-                                          value: Number(item.amount),
-                                          color: item.color
-                                      })) : []}
-                            /> :
-                            ''
-                    }
+                    <PieChart isLoading={this.state.isLoading}
+                              height={250}
+                              width={250}
+                              symbol={this.props.mainCurrencySymbol}
+                              data={this.state.data.length ? this.state.data.map(item => ({
+                                  name: item.name,
+                                  value: Number(item.amount),
+                                  color: item.color
+                              })) : []}
+                    />
                 </Card>
             </div>
         )
@@ -60,7 +57,7 @@ export default class ExpenseTypeInfo extends Component {
 
     loadPieOfTypeWallets() {
         load({
-            path: `/transaction-type/pie-wallets/${
+            path: `/infographic/pie-wallets/${
                 this.props.expenseType.id
             }${
                 GetIntervalPath(this.props.timeInterval)

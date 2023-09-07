@@ -7,6 +7,7 @@ import (
 
 type Transaction struct {
 	gorm.Model
+	ID          uint            `json:"id"`
 	Comment     string          `json:"comment,omitempty"`
 	Amount      float64         `json:"amount,omitempty,string"`
 	PerformedIn time.Time       `json:"performed_in" form:"performed_in"`
@@ -27,19 +28,13 @@ type EditTransaction struct {
 	WalletID    uint      `json:"wallet_id,string"`
 }
 
-type ResponseTransaction struct {
-	ID          uint      `json:"id"`
-	Amount      float64   `json:"amount"`
-	PerformedIn time.Time `json:"performed_in"`
-	Symbol      string    `json:"symbol"`
-	CurrencyID  uint      `json:"currency_id"`
-	TypeName    string    `json:"type_name"`
-	TypeID      uint      `json:"type_id"`
-	WalletID    uint      `json:"wallet_id"`
-}
-
 type AmountForCurrency struct {
 	Amount     float64 `json:"amount"`
 	CurrencyID uint    `json:"currency_id"`
 	Currency   Currency
+}
+
+type TransactionForMonthLine struct {
+	Date   time.Time `json:"date"`
+	Amount float64   `json:"amount"`
 }

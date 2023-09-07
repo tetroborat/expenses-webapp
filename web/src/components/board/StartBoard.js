@@ -1,6 +1,6 @@
 import {Component} from "react";
 import AuthPage from "../page/AuthPage";
-import PlacementExample from "../typicalElements/Toast";
+import Toaster from "../typicalElements/Toast";
 import load from "../../utils/FetchLoad";
 import deleteCookie from "../../utils/DeleteCookie";
 import MainPage from "../page/MainPage";
@@ -9,6 +9,7 @@ import getCookie from "../../utils/GetCookie";
 let defaultState = {
     isAuth: false,
     isSignup: false,
+    isLoading: false,
     messages: {},
     userInfo: {}
 }
@@ -21,18 +22,20 @@ export default class StartBoard extends Component {
 
     render() {
         return (
-            <div className="start-board text-light">
+            <div className="start-board text-light w-100">
                 {
                     this.state.isAuth ?
                         <MainPage userInfo={this.state.userInfo}
                                   logout={() => this.logout()}
-                                  addMessage={message => this.addMessage(message)}/> :
+                                  addMessage={(message, autohide=true) =>
+                                      this.addMessage({message, autohide})}/> :
                         <AuthPage isSignup={this.state.isSignup}
+                                  isLoading={this.state.isLoading}
                                   isSignupSet={isSignup => this.setState({isSignup: isSignup})}
                                   successLogin={() => this.componentDidMount()}
-                                  addMessage={message => this.addMessage(message)}/>
+                                  addMessage={(message, autohide=true) => this.addMessage({message, autohide})}/>
                 }
-                <PlacementExample
+                <Toaster
                     messages={this.state.messages}
                     deleteMessage={key => this.deleteMessage(key)}
                 />
@@ -47,22 +50,25 @@ export default class StartBoard extends Component {
     }
 
     checkToken () {
-        load({
-            path: '/check-token',
-            path_group: '/auth'
-        }).then(data => {
-            if (data.success) {
-                this.setState({
-                    isAuth: true,
-                    userInfo: data.user_info
-                })
-            } else {
-                deleteCookie('token')
-                this.setState({
-                    ...defaultState
-                })
-            }
-        })
+        this.setState({isLoading: true}, () =>
+            load({
+                path: '/check-token',
+                path_group: '/auth'
+            }).then(data => {
+                if (data.success) {
+                    this.setState({
+                        isAuth: true,
+                        isLoading: false,
+                        userInfo: data.user_info
+                    })
+                } else {
+                    deleteCookie('token')
+                    this.setState({
+                        ...defaultState
+                    })
+                }
+            })
+        )
     }
 
     logout() {
@@ -79,11 +85,12 @@ export default class StartBoard extends Component {
         })
     }
 
-    addMessage(message) {
+    addMessage({message, autohide}) {
         const messages= {...this.state.messages}
         messages[Object.keys(this.state.messages).length] = {
             message: message,
-            date: new Date()
+            date: new Date(),
+            autohide: autohide
         }
         this.setState({
             messages: messages,

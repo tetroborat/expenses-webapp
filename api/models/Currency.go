@@ -10,8 +10,12 @@ type Currency struct {
 }
 
 type ResponseCurrency struct {
-	ID      uint   `json:"id,omitempty"`
-	Name    string `json:"name,omitempty"`
-	Symbol  string `json:"symbol,omitempty"`
-	ISOCode string `json:"iso_code,omitempty"`
+	ID      uint   `json:"id"`
+	Name    string `json:"name"`
+	Symbol  string `json:"symbol"`
+	ISOCode string `json:"iso_code"`
+}
+
+type CurrencyForMonthLines struct {
+	ID uint `json:"currency_id"`
 }

@@ -2,6 +2,7 @@ import ActionButton from "../typicalElements/ActionButton";
 import React, {useState} from "react";
 import load from "../../utils/FetchLoad";
 import ModalWindow from "../typicalElements/Modal";
+import Badge from "../typicalElements/Badge";
 
 export default function DeleteTypeButton(props) {
     const [showDelete, setShowDelete] = useState(false);
@@ -29,9 +30,8 @@ function SureDeleteType(props) {
     return (
         <>
             <p className="lead ms-2 mb-0">
-                Удалить тип <span className="badge" style={{backgroundColor: props.type.color}}>
-                    <b>{props.type.name}</b>
-                </span><br/> вместе с операциями?
+                Удалить тип <Badge content={props.type.name} color={props.type.color}/><br/>
+                вместе с операциями?
             </p>
             <div className="d-flex mt-3">
                 <ActionButton
@@ -55,9 +55,7 @@ function deleteTypeButton(props, with_operation) {
     }).then(data => {
         props.addMessage(
             <span>
-                Тип <span className="badge" style={{backgroundColor: type.color}}>
-                    <b>{type.name}</b>
-                </span> {data.success ? "удалён" : "удалить не получилось"}
+                Тип <Badge content={type.name} color={type.color}/> {data.success ? "удалён" : "удалить не получилось"}
             </span>
         )
         props.setIsDoubleLayer(false)

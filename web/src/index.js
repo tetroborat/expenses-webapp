@@ -14,10 +14,12 @@ export const DOMAIN_API=`http://${DOMAIN}:3000`
 export const DOMAIN_WEB=`http://${DOMAIN}:${window.location.port}`
 
 export let WalletImages = importImages(require.context('./images/wallets', false, /\.(svg)$/))
-export let TypeImages = importImages(require.context('./images/transactionsTypes', false, /\.(svg)$/))
+export let ExpensesTypeImages = importImages(require.context('./images/transactionsTypes/expensesTypeImages', false, /\.(svg)$/))
+export let ReplenishmentTypeImages = importImages(require.context('./images/transactionsTypes/replenishmentTypeImages', false, /\.(svg)$/))
 export let AllIcons = [
     ...WalletImages.urls,
-    ...TypeImages.urls
+    ...ReplenishmentTypeImages.urls,
+    ...ExpensesTypeImages.urls
 ]
 
 const root = ReactDOM.createRoot(document.getElementById("root"))

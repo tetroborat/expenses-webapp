@@ -6,7 +6,6 @@ import (
 	"github.com/tetroborat/expenses-webapp/models"
 	"github.com/tetroborat/expenses-webapp/utils"
 	"github.com/tetroborat/expenses-webapp/utils/currencies"
-	"gorm.io/gorm"
 	"strconv"
 )
 
@@ -35,7 +34,8 @@ func WalletsList(c *fiber.Ctx) error {
 	user := utils.GetCurrentUser(c)
 	database.DB.
 		Preload("Currency").
-		Where("user_id = ?", utils.GetCurrentUser(c).ID).
+		Where("user_id = ?", user.ID).
+		Order("weight").
 		Find(&wallets)
 	for _, wallet := range wallets {
 		rate := currencies.GetCurrencyRate(user.Currency, wallet.Currency).Rate
@@ -80,30 +80,4 @@ func EditWallet(c *fiber.Ctx) error {
 		CurrencyID: wallet.CurrencyID,
 	})
 	return c.Status(200).JSON(fiber.Map{"success": true})
-}
-
-func PieOfWalletTypes(c *fiber.Ctx) error {
-	var transactionTypePie []models.PieOfWalletTypesItem
-	var pieGraphicData []utils.PieGraphicItem
-	walletID, adding := c.Params("wallet_id"), c.Params("adding")
-	fromDate, toDate := c.Params("from_date"), c.Params("to_date")
-	database.DB.
-		Model(&models.Transaction{}).
-		Select("type_id, sum(amount) as amount").
-		Preload("Type", func(db *gorm.DB) *gorm.DB {
-			return db.Where("adding = ?", adding).Unscoped()
-		}).
-		Where("wallet_id = ?", walletID).
-		Where("performed_in BETWEEN ? AND ?", fromDate, toDate).
-		Group("type_id").
-		Order("amount desc").
-		Find(&transactionTypePie)
-	for _, item := range transactionTypePie {
-		pieGraphicData = append(pieGraphicData, utils.PieGraphicItem{
-			Name:   item.Type.Name,
-			Color:  item.Type.Color,
-			Amount: item.Amount,
-		})
-	}
-	return c.Status(200).JSON(pieGraphicData)
 }

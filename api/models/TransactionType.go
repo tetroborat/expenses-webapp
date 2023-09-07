@@ -12,6 +12,7 @@ type TransactionType struct {
 	Color  string `json:"color,omitempty"`
 	User   User   `json:"user,omitempty" gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL; ForeignKey:UserID"`
 	UserID uint   `json:"user_id,omitempty,string" form:"user_id"`
+	Weight int    `json:"weight,omitempty,string"`
 }
 
 type EditTransactionType struct {
@@ -36,3 +37,5 @@ type PieOfWalletTypesItem struct {
 	TypeID uint    `json:"type_id"`
 	Type   TransactionType
 }
+
+type TransactionTypeForTransaction EditTransactionType

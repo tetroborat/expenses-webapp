@@ -15,6 +15,7 @@ type Wallet struct {
 	User         User          `json:"user,omitempty" gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL; ForeignKey:UserID"`
 	UserID       uint          `json:"user_id,omitempty,string" form:"user_id"`
 	Transactions []Transaction `json:"transactions,omitempty"`
+	Weight       int           `json:"weight,omitempty,string"`
 }
 
 type EditWallet struct {
@@ -40,4 +41,9 @@ type PieOfTypeWalletsItem struct {
 	Amount   float64 `json:"amount"`
 	WalletID uint    `json:"wallet_id"`
 	Wallet   Wallet
+}
+
+type WalletForTransaction struct {
+	ID   uint   `json:"id"`
+	Name string `json:"name"`
 }

@@ -21,7 +21,7 @@ export default class SignUp extends Component {
 
     render() {
         return (
-            <Form noValidate className="text-dark h-50 w-50 mx-auto"
+            <Form noValidate className="text-dark mx-auto"
                   validated={this.state.validated}
                   onSubmit={this.handleSubmit}>
                 <FloatingLabel controlId="name" label="Имя" className="mb-2">
@@ -92,7 +92,7 @@ export default class SignUp extends Component {
             }).then(data => {
                 if (data.success) {
                     this.props.addMessage(<span><b>{this.state.name}</b>, вы зарегистрированы. Авторизуйтесь для продолжения</span>)
-                    this.props.succesResult()
+                    this.props.successResult()
                 }
                 this.setState({
                     isLoading: false

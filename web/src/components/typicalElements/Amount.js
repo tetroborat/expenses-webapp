@@ -2,9 +2,11 @@ import React from "react";
 
 export default function Amount(props) {
     const amount = props.amount
-    return <span className={props.notCentered ? '' : 'd-flex justify-content-center'}>
+    if (amount) {
+        return <span className={props.notCentered ? '' : 'd-flex justify-content-center'}>
             {FormalizeAmount(amount)}<b className="ms-1">{props.symbol}</b>
         </span>
+    }
 }
 
 function FormalizeAmount(amount) {

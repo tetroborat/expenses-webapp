@@ -6,6 +6,7 @@ import {DOMAIN_WEB, WalletImages} from "../../index";
 import FormalizeBody from "../../utils/FormalizeBody";
 import Svg from "../typicalElements/Svg";
 import DeleteWalletButton from "./DeleteWalletButton";
+import Badge from "../typicalElements/Badge";
 
 export default class AddWallet extends Component {
     constructor(props) {
@@ -154,9 +155,9 @@ export default class AddWallet extends Component {
                 if (data.success) {
                     this.props.updateData(this.state.wallet)
                     message =
-                        <span>Кошелёк <span className="badge" style={{backgroundColor: this.state.wallet.color}}>
-                            <b>{this.state.wallet.name}</b>
-                        </span> {this.state.is_edit ? 'сохранён' : 'добавлен'}</span>
+                        <span>Кошелёк <Badge content={this.state.wallet.name} color={this.state.wallet.color}/> {
+                            this.state.is_edit ? 'сохранён' : 'добавлен'
+                        }</span>
                 } else if (data.message)
                     message = data.message
                 else

@@ -1,5 +1,5 @@
 import AddWallet from "../wallet/AddWallet";
-import AddExpenseType from "../expenseType/AddExpenseType";
+import AddTransactionType from "../transactionType/AddTransactionType";
 import AddTransaction from "../transaction/AddTransaction";
 import {useState} from "react";
 import ModalWindow from "../typicalElements/Modal";
@@ -30,8 +30,23 @@ function renderSwitchAction(props, setIsDoubleLayer) {
                 setIsDoubleLayer={setIsDoubleLayer}
                 backAction={props.backAction}
             />
-        case 'type':
-            return <AddExpenseType
+        case 'replenishmentType':
+            return <AddTransactionType
+                add={true}
+                info={props.addInfo.info}
+                updateData={model => {
+                    props.updateData({
+                        loadReplenishmentTypes: true,
+                        loadTransactions: true
+                    })
+                    props.updateCurrentModel(model)
+                }}
+                addMessage={props.addMessage}
+                setIsDoubleLayer={setIsDoubleLayer}
+                backAction={props.backAction}
+            />
+        case 'expenseType':
+            return <AddTransactionType
                 info={props.addInfo.info}
                 updateData={model => {
                     props.updateData({
@@ -47,13 +62,15 @@ function renderSwitchAction(props, setIsDoubleLayer) {
         case 'transaction':
             return <AddTransaction
                 wallets={props.wallets}
+                replenishmentTypes={props.replenishmentTypes}
                 expenseTypes={props.expenseTypes}
                 allExpenseTypes={props.allExpenseTypes}
                 currencies={props.currencies}
                 updateData={() => props.updateData({
                     loadTransactions: true,
                     loadWallets: true,
-                    loadExpenseTypes: true
+                    loadExpenseTypes: true,
+                    loadReplenishmentTypes: true
                 })}
                 info={props.addInfo.info}
                 addMessage={props.addMessage}

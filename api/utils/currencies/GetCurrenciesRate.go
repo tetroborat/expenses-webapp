@@ -3,12 +3,12 @@ package currencies
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/tetroborat/expenses-webapp/database"
-	"github.com/tetroborat/expenses-webapp/models"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"time"
+
+	"github.com/tetroborat/expenses-webapp/database"
+	"github.com/tetroborat/expenses-webapp/models"
 )
 
 type CurrencyRateFromApi struct {
@@ -53,20 +53,27 @@ func GetCurrenciesRateFromAPI(to string, from string) CurrencyRateFromApi {
 
 func GetCurrencyRate(currencyTo models.Currency, currencyFrom models.Currency) models.CurrenciesRate {
 	var currenciesRate models.CurrenciesRate
-	database.DB.FirstOrInit(
+	database.DB.First(
 		&currenciesRate,
 		models.CurrenciesRate{
 			CurrencyToID:   currencyTo.ID,
 			CurrencyFromID: currencyFrom.ID,
 		},
 	)
-	loc, _ := time.LoadLocation("Europe/Moscow")
-	now := time.Now().In(loc)
-	startOfDay := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, loc)
-	if currenciesRate.UpdatedAt.Before(startOfDay) || currenciesRate.Rate == 0 {
-		currentAPIRate := GetCurrenciesRateFromAPI(currencyTo.ISOCode, currencyFrom.ISOCode)
-		currenciesRate.Rate = currentAPIRate.Result
-		database.DB.Save(&currenciesRate)
-	}
+	//database.DB.FirstOrInit(
+	//	&currenciesRate,
+	//	models.CurrenciesRate{
+	//		CurrencyToID:   currencyTo.ID,
+	//		CurrencyFromID: currencyFrom.ID,
+	//	},
+	//)
+	//loc, _ := time.LoadLocation("Europe/Moscow")
+	//now := time.Now().In(loc)
+	//startOfDay := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, loc)
+	//if currenciesRate.UpdatedAt.Before(startOfDay) || currenciesRate.Rate == 0 {
+	//	currentAPIRate := GetCurrenciesRateFromAPI(currencyTo.ISOCode, currencyFrom.ISOCode)
+	//	currenciesRate.Rate = currentAPIRate.Result
+	//	database.DB.Save(&currenciesRate)
+	//}
 	return currenciesRate
 }

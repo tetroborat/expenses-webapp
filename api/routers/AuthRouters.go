@@ -13,9 +13,12 @@ func AuthRoutes(app *fiber.App) {
 		middlewares.IsAuthorized(),
 		middlewares.UpdateBaseCurrencyRates(),
 		handlers.CheckToken)
-	login.Get("/admin", handlers.Admin)
+	//login.Get("/admin", handlers.Admin)
 	login.Get("/logout", handlers.Logout)
 
 	login.Post("/login", handlers.Login)
 	login.Post("/signup", handlers.SignUp)
+	login.Post("/edit_user",
+		middlewares.IsAuthorized(),
+		handlers.EditUser)
 }

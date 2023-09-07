@@ -3,7 +3,7 @@ import {Button, Col, FloatingLabel, Form, OverlayTrigger, Popover, Row} from "re
 import load from "../../utils/FetchLoad";
 import ActionButton from "../typicalElements/ActionButton";
 import WalletItem from "../wallet/WalletItem";
-import ExpenseTypeItem from "../expenseType/ExpenseTypeItem";
+import TransactionTypeItem from "../transactionType/TransactionTypeItem";
 import FormalizeBody from "../../utils/FormalizeBody";
 import DeleteTransactionButton from "./DeleteTransactionButton";
 import FormalizeDate from "../../utils/FormalizeDate";
@@ -32,15 +32,16 @@ export default class AddTransaction extends Component {
         this.state = {
             is_loading: false,
             validated: false,
-            transaction: transaction
+            transaction: transaction,
+            wallet: getWalletFromList(props.wallets, transaction.wallet_id),
+            type: getTypeFromList(props.expenseTypes, transaction.type_id) ??
+                getTypeFromList(props.replenishmentTypes, transaction.type_id) ?? 
+                getTypeFromList(props.allExpenseTypes, transaction.type_id)
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     render () {
-        let wallet = getWalletFromList(this.props.wallets, this.state.transaction.wallet_id),
-            type = getTypeFromList(this.props.expenseTypes, this.state.transaction.type_id) ??
-                getTypeFromList(this.props.allExpenseTypes, this.state.transaction.type_id)
         return (
             <Form noValidate className="h-50"
                   id="add-transaction"
@@ -62,13 +63,19 @@ export default class AddTransaction extends Component {
                     <Col className="ms-5 ps-3 d-flex justify-content-center align-items-center">
                         <OverlayTrigger trigger="click" placement="left"
                                         rootClose={true}
-                                        overlay={this.renderWalletsPopover()}>
+                                        overlay={this.state.type.adding ? this.renderTypesPopover() : this.renderWalletsPopover()}>
                             <Button variant>
-                                <WalletItem
-                                    key={wallet.id}
-                                    wallet={wallet}
+                                {this.state.type.adding ? <TransactionTypeItem
+                                    key={this.state.type.id}
+                                    type={this.state.type}
                                     active={false}
-                                />
+                                    symbol={this.props.symbol}
+                                /> : 
+                                <WalletItem
+                                    key={this.state.wallet.id}
+                                    wallet={this.state.wallet}
+                                    active={false}
+                                />}
                             </Button>
                         </OverlayTrigger>
                     </Col>
@@ -80,14 +87,19 @@ export default class AddTransaction extends Component {
                     <Col className="me-5 pe-3 d-flex justify-content-center align-items-center">
                         <OverlayTrigger trigger="click" placement="right"
                                         rootClose={true}
-                                        overlay={this.renderTypesPopover()}>
+                                        overlay={!this.state.type.adding ? this.renderTypesPopover() : this.renderWalletsPopover()}>
                             <Button variant>
-                                <ExpenseTypeItem
-                                    key={type.id}
-                                    type={type}
+                                {!this.state.type.adding ? <TransactionTypeItem
+                                    key={this.state.type.id}
+                                    type={this.state.type}
                                     active={false}
                                     symbol={this.props.symbol}
-                                />
+                                /> : 
+                                <WalletItem
+                                    key={this.state.wallet.id}
+                                    wallet={this.state.wallet}
+                                    active={false}
+                                />}
                             </Button>
                         </OverlayTrigger>
                     </Col>
@@ -109,7 +121,7 @@ export default class AddTransaction extends Component {
                         </FloatingLabel>
                     </Col>
                     <Col className="d-flex justify-content-center align-items-center col-1 me-2">
-                        <h4><b>{wallet.symbol}</b></h4>
+                        <h4><b>{this.state.wallet.symbol}</b></h4>
                     </Col>
                 </Row>
                 <ActionButton
@@ -178,7 +190,7 @@ export default class AddTransaction extends Component {
         return (
             <Popover>
                 <Popover.Body>
-                        <div className="icons d-flex align-items-center">
+                        <div className="icons d-grid align-items-center">
                             {
                                 (this.props.wallets && this.props.wallets.length > 0) ? this.props.wallets.map(wallet => {
                                     return <WalletItem
@@ -199,10 +211,10 @@ export default class AddTransaction extends Component {
         return (
             <Popover>
                 <Popover.Body>
-                    <div className="icons d-flex align-items-center">
+                    <div className="icons d-grid align-items-center">
                         {
                             (this.props.expenseTypes && this.props.expenseTypes.length > 0) ? this.props.expenseTypes.map(type => {
-                                return <ExpenseTypeItem
+                                return <TransactionTypeItem
                                     key={type.id}
                                     type={type}
                                     active={true}

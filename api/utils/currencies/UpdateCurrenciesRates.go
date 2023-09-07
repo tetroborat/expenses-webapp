@@ -3,12 +3,13 @@ package currencies
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/tetroborat/expenses-webapp/database"
-	"github.com/tetroborat/expenses-webapp/models"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"reflect"
+
+	"github.com/tetroborat/expenses-webapp/config"
+	"github.com/tetroborat/expenses-webapp/database"
+	"github.com/tetroborat/expenses-webapp/models"
 )
 
 type BaseRatesFromApi struct {
@@ -190,15 +191,17 @@ type BaseRatesFromApi struct {
 	Timestamp int  `json:"timestamp"`
 }
 
-func getCurrenciesRatesFromAPI(base string) BaseRatesFromApi {
+func getCurrenciesRatesFromAPI(base string) (currenciesRates *BaseRatesFromApi, err error) {
+	if base == "" {
+		return currenciesRates, err
+	}
 	url := fmt.Sprintf(
 		"https://api.apilayer.com/fixer/latest?symbols=&base=%s",
 		base,
 	)
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", url, nil)
-	//req.Header.Set("apikey", os.Getenv("CUR_RATE_APIKEY"))
-	req.Header.Set("apikey", "GukSfaLjFmoEX5l6qL8LKEuhA3jEw5ii")
+	req.Header.Set("apikey", config.CFG.CurRateApikey)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -207,12 +210,8 @@ func getCurrenciesRatesFromAPI(base string) BaseRatesFromApi {
 		defer res.Body.Close()
 	}
 	body, err := ioutil.ReadAll(res.Body)
-	var currenciesRates BaseRatesFromApi
 	err = json.Unmarshal(body, &currenciesRates)
-	if err != nil {
-		log.Fatal("Error during Unmarshal(): ", err)
-	}
-	return currenciesRates
+	return currenciesRates, err
 }
 
 func UpdateCurrenciesRates(baseID uint) {
@@ -221,28 +220,33 @@ func UpdateCurrenciesRates(baseID uint) {
 	database.DB.
 		Select("iso_code").
 		First(&baseCurrency, baseID)
-	currenciesRatesFromAPI := getCurrenciesRatesFromAPI(baseCurrency.ISOCode)
-	values := reflect.ValueOf(currenciesRatesFromAPI.Rates)
-	types := values.Type()
-	for i := 0; i < values.NumField(); i++ {
-		var (
-			toCurrency   models.Currency
-			currencyRate models.CurrenciesRate
-		)
-		database.DB.
-			Select("id").
-			Where(models.Currency{
-				ISOCode: types.Field(i).Name,
-			}).
-			First(&toCurrency)
-		database.DB.
-			Where(models.CurrenciesRate{
-				CurrencyToID:   toCurrency.ID,
-				CurrencyFromID: baseID,
-			}).
-			FirstOrInit(&currencyRate)
-		currencyRate.Rate = values.Field(i).Float()
-		currenciesRates = append(currenciesRates, currencyRate)
+	currenciesRatesFromAPI, err := getCurrenciesRatesFromAPI(baseCurrency.ISOCode)
+	// fmt.Println(err)
+	if err == nil {
+		values := reflect.ValueOf(currenciesRatesFromAPI.Rates)
+		types := values.Type()
+		for i := 0; i < values.NumField(); i++ {
+			if values.Field(i).Float() != 0 {
+				var (
+					toCurrency   models.Currency
+					currencyRate models.CurrenciesRate
+				)
+				database.DB.
+					Select("id").
+					Where(models.Currency{
+						ISOCode: types.Field(i).Name,
+					}).
+					First(&toCurrency)
+				database.DB.
+					Where(models.CurrenciesRate{
+						CurrencyToID:   toCurrency.ID,
+						CurrencyFromID: baseID,
+					}).
+					FirstOrInit(&currencyRate)
+				currencyRate.Rate = values.Field(i).Float()
+				currenciesRates = append(currenciesRates, currencyRate)
+			}
+		}
+		database.DB.Save(&currenciesRates)
 	}
-	database.DB.Save(&currenciesRates)
 }

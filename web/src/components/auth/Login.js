@@ -18,21 +18,24 @@ export default class Login extends Component {
     }
 
     render() {
+        let isLoading = this.state.isLoading || this.props.isLoading
         return (
-            <Form noValidate className="text-dark h-50 w-50 mx-auto"
+            <Form noValidate className="text-dark mx-auto"
                   validated={this.state.validated}
                   onSubmit={this.handleSubmit}>
                 <FloatingLabel controlId="email" label="E-mail" className="mb-2">
-                    <Form.Control name="email" type="email" placeholder="E-mail" required autocomplete="email"
+                    <Form.Control name="email" type="email" placeholder="E-mail" required
+                                  autocomplete="email" disabled={isLoading}
                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                   onChange={event => this.handleInputChange(event.target)}/>
                 </FloatingLabel>
                 <FloatingLabel controlId="password" label="Пароль" className="mb-4">
                     <Form.Control name="password" type="password" placeholder="Пароль" required
+                                  disabled={isLoading}
                                   onChange={event => this.handleInputChange(event.target)}/>
                 </FloatingLabel>
                 <ActionButton
-                    isLoading={this.state.isLoading}
+                    isLoading={isLoading}
                     content="Войти"
                 />
             </Form>
@@ -71,7 +74,7 @@ export default class Login extends Component {
                     let name = options.name, value = options.value
                     delete options.name; delete options.value
                     setCookie(name, value, options)
-                    this.props.succesResult()
+                    this.props.successResult()
                 } else {
                     this.props.addMessage(data.message)
                 }

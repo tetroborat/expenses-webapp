@@ -3,7 +3,7 @@ import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import {Image} from "react-bootstrap";
 
-export default class PlacementExample extends Component {
+export default class Toaster extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,7 +31,7 @@ export default class PlacementExample extends Component {
                     Object.entries(this.props.messages).map(([key, message]) => {
                         const minutes = Math.round((this.state.now - message.date) / 60000)
                         return (
-                            <Toast key={key} onClose={() => this.props.deleteMessage(key)} autohide>
+                            <Toast key={key} onClose={() => this.props.deleteMessage(key)} autohide={message.autohide}>
                                 <Toast.Header>
                                     <strong className="me-auto">
                                         <Image draggable="false" width={70} src="logo-md-dark.svg" alt="Expenses"/>

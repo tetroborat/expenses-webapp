@@ -1,15 +1,18 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {FloatingLabel, Form} from "react-bootstrap";
 import load from "../../utils/FetchLoad";
 import ActionButton from "../typicalElements/ActionButton";
-import {DOMAIN_WEB, TypeImages} from "../../index";
+import {DOMAIN_WEB, ExpensesTypeImages, ReplenishmentTypeImages} from "../../index";
 import FormalizeBody from "../../utils/FormalizeBody";
 import Svg from "../typicalElements/Svg";
-import DeleteTypeButton from "./DeleteTypeButton";
+import DeleteTypeButton from "./DeleteTransactionTypeButton";
+import Badge from "../typicalElements/Badge";
 
+var TypeImages
 
-export default class AddExpenseType extends Component {
+export default class AddTransactionType extends Component {
     constructor(props) {
+        TypeImages = props.add ? ReplenishmentTypeImages : ExpensesTypeImages
         super(props);
         let type, isEdit = !!props.info
         if (isEdit) {
@@ -124,16 +127,18 @@ export default class AddExpenseType extends Component {
                 method: 'POST',
                 body: {
                     ...FormalizeBody(this.state.type),
-                    adding: false
+                    adding: this.props.add
         }
             }).then(data => {
                 let message
                 if (data.success) {
                     this.props.updateData(this.state.type)
                     message =
-                        <span>Тип <span className="badge" style={{backgroundColor: this.state.type.color}}>
-                            <b>{this.state.type.name}</b>
-                        </span> {this.state.isEdit ? 'сохранён' : 'добавлен'}</span>
+                        <span>Тип <Badge
+                            content={this.state.type.name}
+                            color={this.state.type.color}/> {
+                            this.state.isEdit ? 'сохранён' : 'добавлен'
+                        }</span>
                 } else if (data.message)
                     message = data.message
                 else

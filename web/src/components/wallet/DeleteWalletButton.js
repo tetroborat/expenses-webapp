@@ -2,6 +2,7 @@ import ActionButton from "../typicalElements/ActionButton";
 import React, {useState} from "react";
 import load from "../../utils/FetchLoad";
 import ModalWindow from "../typicalElements/Modal";
+import Badge from "../typicalElements/Badge";
 
 
 export default function DeleteWalletButton(props) {
@@ -30,9 +31,8 @@ function SureDeleteWallet(props) {
     return (
         <>
             <p className="lead ms-2 mb-0">
-                Удалить кошелёк <span className="badge" style={{backgroundColor: props.wallet.color}}>
-                    <b>{props.wallet.name}</b>
-                </span><br/> вместе с операциями?
+                Удалить кошелёк <Badge content={props.wallet.name} color={props.wallet.color}/>
+                <br/> вместе с операциями?
             </p>
             <div className="d-flex mt-3">
                 <ActionButton
@@ -56,9 +56,8 @@ function deleteWalletButton(props, with_operation) {
     }).then(data => {
         props.addMessage(
             <span>
-                Кошелёк <span className="badge" style={{backgroundColor: wallet.color}}>
-                    <b>{wallet.name}</b>
-                </span> {data.success ? "удалён" : "удалить не получилось"}
+                Кошелёк <Badge content={wallet.name} color={wallet.color}/>
+                {data.success ? "удалён" : "удалить не получилось"}
             </span>
         )
         props.setIsDoubleLayer(false)

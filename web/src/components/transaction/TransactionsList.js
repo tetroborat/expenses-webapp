@@ -9,7 +9,7 @@ import TransactionsListPlaceHolder from "../placeHolder/TransactionsListPlaceHol
 export default function TransactionsList(props) {
     return (
         <>
-            <h3 className="d-flex justify-content-between mx-4 mb-3">
+            <h3 className="d-flex justify-content-between ms-4 me-3 mb-3">
                 <span>Операции за <OverlayTrigger
                     trigger="click"
                     placement="top"
@@ -33,7 +33,7 @@ export default function TransactionsList(props) {
     )
 }
 
-function renderDateIntervalPopover (props) {
+function renderDateIntervalPopover(props) {
     return (
         <Popover>
             <Popover.Body>
@@ -80,7 +80,7 @@ function renderTransaction(transaction, pre_transaction, onClick) {
                 },
                 type: {
                     id: transaction.type_id,
-                    name: transaction.type_name,
+                    name: transaction.type.name,
                 },
                 transaction: {
                     id: transaction.id,
@@ -96,9 +96,13 @@ function renderTransaction(transaction, pre_transaction, onClick) {
 }
 
 function checkPreviousTransactionDate(transaction, pre_transaction) {
-    return !pre_transaction || (pre_transaction && (
-        +new Date(transaction.performed_in).getDate() !== +new Date(pre_transaction.performed_in).getDate()
-    ))
+    if (pre_transaction) {
+        let current_date = +new Date(transaction.performed_in).getDate()
+        let pre_date = +new Date(pre_transaction.props.transaction.performed_in).getDate()
+        return current_date !== pre_date
+    } else {
+        return true
+    }
 }
 
 function formatDate(string){

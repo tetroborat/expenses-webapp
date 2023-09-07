@@ -2,6 +2,7 @@ package utils
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/tetroborat/expenses-webapp/database"
 	"github.com/tetroborat/expenses-webapp/models"
 	"io/ioutil"
@@ -36,12 +37,10 @@ func UpsertOperations() {
 		if !exist {
 			operationType = models.TransactionType{
 				Name:   element.Name,
-				UserID: 3,
+				UserID: 1,
 				Adding: false,
-				Icon:   "./shop.svg",
-				Color:  "#5547d0",
 			}
-			database.DB.Create(&operationType)
+			database.DB.Where("name = ?", element.Name).FirstOrCreate(&operationType)
 			operationsForType[element.Name] = operationType
 		}
 		date, _ := time.Parse("02.01.2006", element.Date)
@@ -50,9 +49,10 @@ func UpsertOperations() {
 			TypeID:      operationType.ID,
 			Amount:      element.Amount,
 			PerformedIn: date,
-			WalletID:    7,
+			WalletID:    1,
 			CurrencyID:  145,
 		})
 	}
+	fmt.Println(operationsForType)
 	database.DB.Create(&operations)
 }

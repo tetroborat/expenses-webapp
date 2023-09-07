@@ -19,17 +19,22 @@ func AddTransaction(c *fiber.Ctx) error {
 		Select("id").
 		First(&wallet, transaction.WalletID)
 	database.DB.Create(&transaction)
-	database.DB.
-		Model(&wallet).
-		Update("amount", gorm.Expr("amount - ?", transaction.Amount))
+	if utils.CheckAddingTransaction(transaction.TypeID) {
+		database.DB.
+			Model(&wallet).
+			Update("amount", gorm.Expr("amount + ?", transaction.Amount))
+	} else {
+		database.DB.
+			Model(&wallet).
+			Update("amount", gorm.Expr("amount - ?", transaction.Amount))
+	}
 	return c.Status(200).JSON(fiber.Map{"success": true})
 }
 
 func TransactionsList(c *fiber.Ctx) error {
 	var (
-		transactions         []models.Transaction
-		responseTransactions []models.ResponseTransaction
-		totalAmount          struct {
+		transactions []models.Transaction
+		totalAmount  struct {
 			Result float64
 		}
 	)
@@ -52,29 +57,12 @@ func TransactionsList(c *fiber.Ctx) error {
 			Where("performed_in BETWEEN ? AND ?", fromDate, toDate).
 			Where("wallet_id = ?", walletID).
 			Scan(&totalAmount)
-		for _, transaction := range transactions {
-			responseTransactions = append(responseTransactions, models.ResponseTransaction{
-				ID:          transaction.ID,
-				Amount:      transaction.Amount,
-				PerformedIn: transaction.PerformedIn,
-				Symbol:      transaction.Currency.Symbol,
-				CurrencyID:  transaction.CurrencyID,
-				TypeName:    transaction.Type.Name,
-				TypeID:      transaction.TypeID,
-				WalletID:    transaction.WalletID,
-			})
-		}
 	} else {
 		if typeID != "" {
 			query.Where("type_id = ?", typeID).Find(&transactions)
 		} else {
 			query.
-				Where("(type_id in (?) or wallet_id in (?))",
-					database.DB.
-						Unscoped().
-						Model(models.TransactionType{}).
-						Select("id").
-						Where("user_id = ?", user.ID),
+				Where("wallet_id in (?)",
 					database.DB.
 						Unscoped().
 						Model(models.Wallet{}).
@@ -89,20 +77,10 @@ func TransactionsList(c *fiber.Ctx) error {
 			} else {
 				totalAmount.Result += transaction.Amount
 			}
-			responseTransactions = append(responseTransactions, models.ResponseTransaction{
-				ID:          transaction.ID,
-				Amount:      transaction.Amount,
-				PerformedIn: transaction.PerformedIn,
-				Symbol:      transaction.Currency.Symbol,
-				CurrencyID:  transaction.CurrencyID,
-				TypeName:    transaction.Type.Name,
-				TypeID:      transaction.TypeID,
-				WalletID:    transaction.WalletID,
-			})
 		}
 	}
 	return c.JSON(fiber.Map{
-		"list":  responseTransactions,
+		"list":  transactions,
 		"total": totalAmount.Result,
 	})
 }
@@ -111,16 +89,26 @@ func DeleteTransaction(c *fiber.Ctx) error {
 	transactionID := c.Params("transaction_id")
 	transaction := new(models.Transaction)
 	database.DB.
-		Select("id, wallet_id, amount").
+		Select("id, wallet_id, amount, type_id").
 		First(&transaction, transactionID)
 	database.DB.Delete(transaction)
-	database.DB.
-		Model(models.Wallet{}).
-		Where("id = ?", transaction.WalletID).
-		Update(
-			"amount",
-			gorm.Expr("amount + ?", transaction.Amount),
-		)
+	if utils.CheckAddingTransaction(transaction.TypeID) {
+		database.DB.
+			Model(models.Wallet{}).
+			Where("id = ?", transaction.WalletID).
+			Update(
+				"amount",
+				gorm.Expr("amount - ?", transaction.Amount),
+			)
+	} else {
+		database.DB.
+			Model(models.Wallet{}).
+			Where("id = ?", transaction.WalletID).
+			Update(
+				"amount",
+				gorm.Expr("amount + ?", transaction.Amount),
+			)
+	}
 	return c.Status(200).JSON(fiber.Map{"success": true})
 }
 

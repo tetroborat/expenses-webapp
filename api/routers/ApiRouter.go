@@ -11,6 +11,7 @@ func ApiRoutes(app *fiber.App) {
 	WalletRouter(api)
 	TransactionRouter(api)
 	TransactionTypeRouter(api)
+	InfoGraphicsRouter(api)
 
 	api.Get("/currencies", handlers.CurrenciesList)
 	api.Post("/add-currency", handlers.AddCurrency)

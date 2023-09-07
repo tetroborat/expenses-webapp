@@ -10,10 +10,13 @@ a {
     text-shadow: 0 0 7px white;
     transition: .7s;
     font-weight: bolder;
+    color: unset;
+    text-decoration: unset;
 }
 
 a:hover {
     text-shadow: 0 0 20px white;
+    color: unset;
 }
 
 .start-board {
@@ -27,9 +30,10 @@ a:hover {
     overflow: hidden;
     transition: 1s;
     max-width: 620px;
+    min-width: 320px;
 }
 
-.wallets-card {
+.card-with-draggable {
     overflow: unset !important;
 }
 
@@ -67,7 +71,6 @@ a:hover {
     cursor: pointer;
     border-radius: 1rem;
     padding: .5rem;
-    margin-right: .5rem
 }
 
 .icon-item:last-child {
@@ -90,14 +93,7 @@ a:hover {
     transition: .5s ease;
     cursor: pointer;
     max-height: 62px;
-}
-
-.list-group-flush>.list-group-item:last-child {
-    border-radius: 0 0 1.5rem 1.5rem;
-}
-
-.list-group-flush>.list-group-item:first-child {
-    border-radius: 1.5rem 1.5rem 0 0;
+    border: 0;
 }
 
 .choose-icon-card input {
@@ -112,7 +108,7 @@ a:hover {
 .icon-item-image-block {
     margin: .3rem .5rem;
     border-radius: 2.5rem;
-    padding: .75rem;
+    padding: 12px;
     width: 50px;
     height: 50px;
     z-index: 100;
@@ -123,8 +119,16 @@ a:hover {
     padding: 0;
 }
 
-.wallet-icon-item-image-block {
-    z-index: 200 !important;
+.z-200 {
+    z-index: 200;
+}
+
+.z-300 {
+    z-index: 300;
+}
+
+.adding-amount {
+    color: #64f84f
 }
 
 .choose-icon-card .form-check {
@@ -148,7 +152,8 @@ button {
 
 .icons {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
 }
 
 .toast {
@@ -218,7 +223,8 @@ button {
 }
 
 .head-logo {
-    margin-bottom: 3rem
+    margin-bottom: 3rem;
+    width: 100%;
 }
 
 * {
@@ -240,40 +246,69 @@ button {
     border-radius: 5px;
 }
 
-@media (min-width: 980px) and (max-width: 1100px) {
-    .icons {
-        grid-template-columns: repeat(4, 1fr);
-    }
+.auth-board {
+    max-width: 500px;
+    padding: 1rem;
 }
 
-@media (min-width: 768px) and (max-width: 980px) {
+.small-icon-item-image-block {
+    border-radius: 2.5rem;
+    z-index: 100;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    padding: 3px 8px;
+    margin: .3rem .7rem .3rem 0
+}
+
+@media (min-width: 980px) and (max-width: 1100px) {
     .icons {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 880px) {
+@media (min-width: 560px) and (max-width: 980px) {
+    .icons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .card {
+        max-width: unset;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 560px) {
+    .icons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 375px) {
     .icons {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 576px) {
+    .auth-board {
+        max-width: unset;
+    }
     .start-board {
         padding: 0
     }
-    .card-body {
-        padding-left: 0;
-        padding-right: 0;
-    }
     .head-logo {
         justify-content: unset!important;
-        margin: 1.5rem .7rem;
+        margin: 1rem .7rem;
     }
     .head-logo > img {
         width: 200px;
     }
     .head-logo > h4 {
         margin-top: .7rem!important;
+    }
+    .col {
+        padding-right: 0;
+    }
+    .card {
+        border-radius: 0;
     }
 }

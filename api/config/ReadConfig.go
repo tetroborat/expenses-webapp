@@ -22,6 +22,8 @@ type Config struct {
 	JwtMaxAge    int           `mapstructure:"JWT_MAXAGE"`
 
 	CurRateApikey string `mapstructure:"CUR_RATE_APIKEY"`
+
+	Domain string `mapstructure:"DOMAIN"`
 }
 
 func LoadConfig(path string) {

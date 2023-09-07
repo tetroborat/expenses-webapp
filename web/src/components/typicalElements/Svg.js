@@ -21,7 +21,7 @@ export default class Svg extends Component {
                     {
                         (loading || !svg) ?
                             <Spinner size='sm'/> :
-                            <div className="w-100" dangerouslySetInnerHTML={{__html: svg}}/>
+                            <div className="w-100 h-100 m-0 p-0" dangerouslySetInnerHTML={{__html: svg}}/>
                     }
                 </div>
             )

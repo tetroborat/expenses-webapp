@@ -23,13 +23,13 @@ type RegisteringUser struct {
 }
 
 type UserInfo struct {
-	ID        uint      `json:"id,omitempty"`
-	Name      string    `json:"name,omitempty"`
-	Email     string    `json:"email,omitempty"`
-	Role      string    `json:"role,omitempty"`
+	ID        uint      `json:"id"`
+	Name      string    `json:"name"`
+	Email     string    `json:"email"`
+	Role      string    `json:"role"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
-	Currency  Currency  `json:"currency,omitempty"`
+	Currency  Currency  `json:"currency"`
 }
 
 func FilterUserRecord(user *User) UserInfo {
@@ -42,4 +42,10 @@ func FilterUserRecord(user *User) UserInfo {
 		UpdatedAt: user.UpdatedAt,
 		Currency:  user.Currency,
 	}
+}
+
+type EditUser struct {
+	Name       string `json:"name"`
+	Email      string `json:"email"`
+	CurrencyID uint   `json:"currency_id,string" form:"currency_id"`
 }

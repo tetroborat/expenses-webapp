@@ -10,7 +10,7 @@ export default function WalletItem(props) {
              onClick={props.onClick ? props.onClick : void(0)}
              ref={props.setElementRef}>
             <div className="d-flex justify-content-center drag-name">{wallet.name}</div>
-            <div className="wallet-icon-item-image-block icon-item-image-block mx-auto"
+            <div className="z-200 icon-item-image-block mx-auto"
                 style={{
                     backgroundColor: wallet.color,
                 }}>

@@ -8,8 +8,15 @@ import IconsListPlaceHolder from "../placeHolder/IconsListPlaceHolder";
 export default function WalletsList(props) {
     return (
         <div className="mb-5">
-            <h3 className="d-flex justify-content-between mx-4 mb-3">
-                <span>Кошельки</span>
+            <h3 className="d-flex justify-content-between ms-4 me-3 mb-3">
+                <div className="d-flex align-items-end">
+                    <span>Кошельки</span>
+                    <h5 className='action-btn-group mb-0 ms-1'>
+                        <span className='action-btn pb-0'>
+                            <i className='bi bi-pencil-square'></i>
+                        </span>
+                    </h5>
+                </div>
                 <Amount
                     amount={props.totalAmount}
                     symbol={props.symbol}
@@ -17,7 +24,7 @@ export default function WalletsList(props) {
             </h3>
             {
                 props.isLoading ? <IconsListPlaceHolder/> :
-                    <Card body className="wallets-card">
+                    <Card body className="card-with-draggable">
                         <div className="icons">
                             {
                                 (props.wallets && props.wallets.length > 0) ? props.wallets.map(wallet => {

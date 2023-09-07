@@ -1,14 +1,16 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import TransactionsList from "../transaction/TransactionsList";
 import load from "../../utils/FetchLoad";
 import DraggableBoard from "../board/DraggableBoard";
 import ActionBoard from "../board/ActionBoard";
 import {Col, Image, Row, Spinner} from "react-bootstrap";
 import WalletInfo from "../wallet/WalletInfo";
-import ExpenseTypeInfo from "../expenseType/ExpenseTypeInfo";
+import ExpenseTypeInfo from "../transactionType/expenseType/ExpenseTypeInfo";
 import LogoutButton from "../auth/LogoutButton";
 import GetTransactionsPath from "../../utils/GetTransactionsPath";
 import GetIntervalPath from "../../utils/GetIntervalPath";
+import EditUserButton from "../auth/EditUserButton";
+import AnalyticsBoard from "../board/AnalyticsBoard";
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -18,6 +20,7 @@ export default class MainPage extends Component {
             isLoadingWallets: true,
             isLoadingExpenseTypes: true,
             isLoadingTransactions: true,
+            isShownAnalytics: false,
             hasTransactions: false,
             transactionsPath: {},
             wallets: [],
@@ -26,7 +29,7 @@ export default class MainPage extends Component {
             expenseTypes: [],
             allExpenseTypes: [],
             currencies: [],
-            totalReplenishmentTypes: 0,
+            totalReplenishmentTypesAmount: 0,
             totalExpenseTypesAmount: 0,
             totalWalletsAmount: 0,
             totalTransactionsAmount: 0,
@@ -54,22 +57,35 @@ export default class MainPage extends Component {
                 <div className="head-logo position-relative d-flex justify-content-center align-items-center text-white">
                     <Image draggable="false" width={300} src="logo-md.svg" alt="Expanses"/>
                     <h4 className="position-absolute action-btn-group mt-4">
-                        <span className="action-btn me-1">
-                            <i className="bi bi-person-gear"></i>
+                        <span className='action-btn pb-0'
+                              onClick={() => this.setState({isShownAnalytics: true})}>
+                            <i className="bi bi-graph-up"></i>
                         </span>
+                        <EditUserButton
+                            currencies={this.state.currencies}
+                            userInfo={this.props.userInfo}
+                            addMessage={message => this.props.addMessage(message, false)}/>
                         <LogoutButton
                             onClick={this.props.logout}
                         />
                     </h4>
                 </div>
-                <Row>
-                    <Col>
-                        {this.renderLeftSide()}
-                    </Col>
-                    <Col>
-                        {this.renderRightSide()}
-                    </Col>
-                </Row>
+                {
+                    this.state.isShownAnalytics ?
+                    // true ?
+                        <AnalyticsBoard backAction={() => this.setState({
+                            isShownAnalytics: false
+                        })}/>
+                        :
+                        <Row>
+                            <Col>
+                                {this.renderLeftSide()}
+                            </Col>
+                            <Col>
+                                {this.renderRightSide()}
+                            </Col>
+                        </Row>
+                }
             </>
         )
     }
@@ -99,8 +115,10 @@ export default class MainPage extends Component {
                                 this.handleIconItem(model, {typeId: model.id})
                             }}
                             expenseTypes={this.state.expenseTypes}
+                            replenishmentTypes={this.state.replenishmentTypes}
                             totalAmount={{
-                                types: this.state.totalExpenseTypesAmount,
+                                replenishmentTypes: this.state.totalReplenishmentTypesAmount,
+                                expenseTypes: this.state.totalExpenseTypesAmount,
                                 wallets: this.state.totalWalletsAmount,
                             }}
                             symbol={this.props.userInfo.currency.symbol}
@@ -115,6 +133,7 @@ export default class MainPage extends Component {
                             updateData={kwargs => this.updateData(kwargs)}
                             addInfo={this.state.addInfo}
                             wallets={this.state.wallets}
+                            replenishmentTypes={this.state.replenishmentTypes}
                             expenseTypes={this.state.expenseTypes}
                             allExpenseTypes={this.state.allExpenseTypes}
                             addMessage={message => this.props.addMessage(message)}
@@ -143,6 +162,7 @@ export default class MainPage extends Component {
                     info: info
                 })}
                 timeInterval={this.state.timeInterval}
+                isLoading={this.state.isLoadingTransactions}
                 selectDate={({fromDate, toDate}) => {
                     this.setState({
                         timeInterval: {
@@ -171,10 +191,10 @@ export default class MainPage extends Component {
                     })}
                     wallet={this.state.currentModel}
                     addMessage={message => this.props.addMessage(message)}
-                    backAction={() => {this.setState({
+                    backAction={() => this.setState({
                         transactionsPath: {},
                         totalTransactionsSymbol: this.props.userInfo.currency.symbol
-                    },() => this.loadTransactions({}))}}
+                    },() => this.loadTransactions({}))}
                     updateData={withOperation => this.updateData({
                         loadWallets: true,
                         loadExpenseTypes: withOperation
@@ -185,7 +205,7 @@ export default class MainPage extends Component {
                 "typeId" in this.state.transactionsPath ?
                     <ExpenseTypeInfo
                         addInfo={expenseType => this.addInfo({
-                            key: 'type',
+                            key: 'expenseType',
                             info: {
                                 type: expenseType,
                             }
@@ -193,9 +213,9 @@ export default class MainPage extends Component {
                         expenseType={this.state.currentModel}
                         mainCurrencySymbol={this.props.userInfo.currency.symbol}
                         addMessage={message => this.props.addMessage(message)}
-                        backAction={() => {this.setState({
+                        backAction={() => this.setState({
                             transactionsPath: {}
-                        },() => this.loadTransactions({}))}}
+                        },() => this.loadTransactions({}))}
                         updateData={withOperation => this.updateData({
                             loadExpenseTypes: true,
                             loadWallets: withOperation,
@@ -238,6 +258,16 @@ export default class MainPage extends Component {
         })
     }
 
+    componentDidMount() {
+        this.loadCurrencies()
+        this.updateData({
+            loadWallets: true,
+            loadReplenishmentTypes: true,
+            loadExpenseTypes: true,
+            loadTransactions: true,
+        })
+    }
+
     loadWallets() {
         this.setState({
             isLoadingWallets: true
@@ -252,43 +282,37 @@ export default class MainPage extends Component {
         )
     }
 
-    async componentDidMount() {
-        await this.loadCurrencies()
-        await this.updateData({
-            loadWallets: true,
-            loadReplenishmentTypes: true,
-            loadExpenseTypes: true,
-            loadTransactions: true,
-        })
-    }
-
     loadTransactions({walletId = null, typeId = null}) {
-        load({
+        this.setState({
+            isLoadingTransactions: true
+        }, () => load({
             path: GetTransactionsPath({walletId, typeId}) + this.getIntervalPath(),
         }).then(data => {
-            if (data.total !== 0) {
-                this.setState({
-                    transactions: data.list,
-                    totalTransactionsAmount: data.total.toFixed(2)
-                })
-            } else {
-                this.setState({
-                    transactions: [],
-                    totalTransactionsAmount: 0
-                })
-            }
-        })
+            this.setState(data.total !== 0 ? {
+                transactions: data.list,
+                totalTransactionsAmount: data.total.toFixed(2)
+            } : {
+                transactions: [],
+                totalTransactionsAmount: 0
+            }, () => this.setState({
+                isLoadingTransactions: false
+            }))
+        }))
     }
 
     loadReplenishmentTypes() {
-        load({
+        this.setState({
+            isLoadingExpenseTypes: true
+        }, () => load({
             path: "/transaction-type/replenishment-list" + this.getIntervalPath()
         }).then(data => {
             this.setState({
-                replenishmentTypes: data.list,
-                totalReplenishmentTypes: data.total.toFixed(2)
-            })
-        })
+                    replenishmentTypes: data.list,
+                    allReplenishmentTypes: data.list_with_delete,
+                    totalReplenishmentTypes: data.total.toFixed(2)
+                },
+                () => this.setState({isLoadingExpenseTypes: false}))
+        }))
     }
 
     loadExpenseTypes() {
@@ -314,23 +338,23 @@ export default class MainPage extends Component {
         })
     }
 
-    async updateData({
+    updateData({
                          loadWallets = false,
                          loadReplenishmentTypes = false,
                          loadExpenseTypes = false,
                          loadTransactions = false
                      } = {}) {
         if (loadWallets) {
-            await this.loadWallets()
+            this.loadWallets()
         }
         if (loadReplenishmentTypes) {
-            await this.loadReplenishmentTypes()
+            this.loadReplenishmentTypes()
         }
         if (loadExpenseTypes) {
-            await this.loadExpenseTypes()
+            this.loadExpenseTypes()
         }
         if (loadTransactions) {
-            await this.loadTransactions(this.state.transactionsPath)
+            this.loadTransactions(this.state.transactionsPath)
         }
         this.cancelAddModal()
     }
